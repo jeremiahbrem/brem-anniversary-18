@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 18th Anniversary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #faf7f5;
+      color: #3c2a2a;
+      font-family: 'Cormorant Garamond', serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      overflow-x: hidden;
+    }
+
+    /* Outer Container for Floral Frame */
+    .card-frame {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      min-height: 80vh;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(60, 42, 42, 0.08);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 50px 35px;
+    }
+
+    /* Animated Floral Border SVG */
+    .floral-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .vine-path {
+      fill: none;
+      stroke: #8a9a86; /* Soft green */
+      stroke-width: 2.5;
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 2000;
+      animation: growVine 4s ease-out forwards;
+    }
+
+    .leaf {
+      fill: #a3b19b;
+      opacity: 0;
+      animation: fadeInLeaves 1s ease-out 3s forwards;
+    }
+
+    .flower {
+      fill: #d98880; /* Soft romantic rose tint */
+      opacity: 0;
+      animation: bloomFlowers 1.2s ease-out 3.5s forwards;
+    }
+
+    /* Typing Text Styling */
+    .text-container {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 480px;
+    }
+
+    .typed-text {
+      font-size: 1.6rem;
+      line-height: 1.7;
+      letter-spacing: 0.02em;
+      font-weight: 400;
+      white-space: pre-wrap; /* Preserves line breaks */
+      color: #3c2a2a;
+    }
+
+    /* Blinking Cursor */
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.4rem;
+      background-color: #d98880;
+      margin-left: 2px;
+      animation: blink 0.8s infinite;
+      vertical-align: middle;
+    }
+
+    /* Animations */
+    @keyframes growVine {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes fadeInLeaves {
+      to {
+        opacity: 0.85;
+      }
+    }
+
+    @keyframes bloomFlowers {
+      to {
+        opacity: 0.9;
+      }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    @media (max-width: 480px) {
+      .typed-text {
+        font-size: 1.35rem;
+        line-height: 1.6;
+      }
+      .card-frame {
+        padding: 40px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-frame">
+    <!-- Vine & Floral SVG Border -->
+    <svg class="floral-svg" viewBox="0 0 400 600" preserveAspectRatio="none">
+      <!-- Outer Vine Frame -->
+      <path class="vine-path" d="M 20,20 L 380,20 L 380,580 L 20,580 Z" />
+      
+      <!-- Decorative Corner Vines -->
+      <path class="vine-path" d="M 20,60 Q 60,60 60,20" />
+      <path class="vine-path" d="M 380,60 Q 340,60 340,20" />
+      <path class="vine-path" d="M 20,540 Q 60,540 60,580" />
+      <path class="vine-path" d="M 380,540 Q 340,540 340,580" />
+
+      <!-- Leaves -->
+      <path class="leaf" d="M 50,20 Q 55,10 60,20 Q 55,30 50,20 Z" />
+      <path class="leaf" d="M 350,20 Q 345,10 340,20 Q 345,30 350,20 Z" />
+      <path class="leaf" d="M 20,100 Q 10,105 20,110 Q 30,105 20,100 Z" />
+      <path class="leaf" d="M 380,100 Q 390,105 380,110 Q 370,105 380,100 Z" />
+      <path class="leaf" d="M 50,580 Q 55,570 60,580 Q 55,590 50,580 Z" />
+      <path class="leaf" d="M 350,580 Q 345,570 340,580 Q 345,590 350,580 Z" />
+
+      <!-- Corner Flower Blooms -->
+      <circle class="flower" cx="60" cy="60" r="7" />
+      <circle class="flower" cx="340" cy="60" r="7" />
+      <circle class="flower" cx="60" cy="540" r="7" />
+      <circle class="flower" cx="340" cy="540" r="7" />
+    </svg>
+
+    <!-- Content Area -->
+    <div class="text-container">
+      <span id="typed" class="typed-text"></span><span id="cursor" class="cursor"></span>
+    </div>
+  </div>
+
+  <script>
+    const message = `My beautiful wife,\n\nHappy 18th Anniversary. You have held me together and I do not know what I would do without you. I love you so much and thank you for your love.\n\n- Jeremiah`;
+
+    const typedElement = document.getElementById("typed");
+    const cursorElement = document.getElementById("cursor");
+    let index = 0;
+
+    // Start typing after the vine animation completes slightly
+    setTimeout(() => {
+      function typeChar() {
+        if (index < message.length) {
+          typedElement.textContent += message.charAt(index);
+          index++;
+          // Variable delay for realistic typing effect
+          let delay = message.charAt(index - 1) === '.' || message.charAt(index - 1) === ',' ? 400 : 50;
+          setTimeout(typeChar, delay);
+        } else {
+          // Hide cursor slowly after typing completes
+          setTimeout(() => {
+            cursorElement.style.display = "none";
+          }, 1500);
+        }
+      }
+      typeChar();
+    }, 1500);
+  </script>
+</body>
+</html>
