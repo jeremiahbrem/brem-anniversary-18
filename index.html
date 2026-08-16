@@ -37,12 +37,31 @@
       justify-content: center;
       align-items: center;
       padding: 60px 40px;
+      overflow: hidden;
+      background-color: #faf7f5;
+    }
 
-      /* Image Background Settings */
+    /* Background image layer for fade-in effect */
+    .card-frame::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background-image: url('1786894503321.png');
       background-size: 100% 100%;
       background-position: center;
       background-repeat: no-repeat;
+      border-radius: 16px;
+      opacity: 0;
+      animation: fadeInBg 3s ease-in-out forwards;
+      z-index: 1;
+    }
+
+    @keyframes fadeInBg {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     /* Typing Text Styling */
@@ -62,22 +81,6 @@
       color: #3c2a2a;
     }
 
-    /* Blinking Cursor */
-    .cursor {
-      display: inline-block;
-      width: 2px;
-      height: 1.3rem;
-      background-color: #d98880;
-      margin-left: 2px;
-      animation: blink 0.8s infinite;
-      vertical-align: middle;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
     @media (max-width: 480px) {
       .typed-text {
         font-size: 1.25rem;
@@ -95,7 +98,7 @@
   <div class="card-frame">
     <!-- Content Area -->
     <div class="text-container">
-      <span id="typed" class="typed-text"></span><span id="cursor" class="cursor"></span>
+      <span id="typed" class="typed-text"></span>
     </div>
   </div>
 
@@ -103,24 +106,19 @@
     const message = `My beautiful wife,\n\nHappy 18th Anniversary. You have held me together and I do not know what I would do without you. I love you so much and thank you for your love.\n\n- Jeremiah`;
 
     const typedElement = document.getElementById("typed");
-    const cursorElement = document.getElementById("cursor");
     let index = 0;
 
-    // Start typing effect immediately
     function typeChar() {
       if (index < message.length) {
         typedElement.textContent += message.charAt(index);
         index++;
         let delay = message.charAt(index - 1) === '.' || message.charAt(index - 1) === ',' ? 350 : 45;
         setTimeout(typeChar, delay);
-      } else {
-        setTimeout(() => {
-          cursorElement.style.display = "none";
-        }, 1500);
       }
     }
 
-    setTimeout(typeChar, 500);
+    // 5-second delay before typing begins
+    setTimeout(typeChar, 5000);
   </script>
 </body>
 </html>
