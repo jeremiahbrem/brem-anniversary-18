@@ -23,49 +23,26 @@
       justify-content: center;
       align-items: center;
       padding: 15px;
-      overflow-x: hidden;
     }
 
-    /* Outer Container for Floral Frame */
+    /* Outer Container using the uploaded image as the background frame */
     .card-frame {
       position: relative;
       width: 100%;
-      max-width: 600px;
+      max-width: 500px;
       min-height: 85vh;
-      background: #ffffff;
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(60, 42, 42, 0.08);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(60, 42, 42, 0.1);
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 60px 45px;
-      margin: auto;
-    }
+      padding: 60px 40px;
 
-    /* Animated Floral Border SVG */
-    .floral-svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
-    .vine-path {
-      fill: none;
-      stroke: #8a9a86; /* Soft green */
-      stroke-width: 2.2;
-      stroke-linecap: round;
-      stroke-dasharray: 2500;
-      stroke-dashoffset: 2500;
-      animation: growVine 5s ease-out forwards;
-    }
-
-    .flower {
-      fill: #d98880; /* Soft romantic rose tint */
-      opacity: 0;
-      animation: bloomFlowers 1.5s ease-out 4.2s forwards;
+      /* Image Background Settings */
+      background-image: url('1786893289689.png');
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     /* Typing Text Styling */
@@ -73,14 +50,14 @@
       position: relative;
       z-index: 10;
       text-align: center;
-      max-width: 480px;
+      max-width: 380px;
     }
 
     .typed-text {
-      font-size: 1.5rem;
+      font-size: 1.45rem;
       line-height: 1.7;
       letter-spacing: 0.01em;
-      font-weight: 400;
+      font-weight: 500;
       white-space: pre-wrap; /* Preserves line breaks */
       color: #3c2a2a;
     }
@@ -89,24 +66,11 @@
     .cursor {
       display: inline-block;
       width: 2px;
-      height: 1.4rem;
+      height: 1.3rem;
       background-color: #d98880;
       margin-left: 2px;
       animation: blink 0.8s infinite;
       vertical-align: middle;
-    }
-
-    /* Animations */
-    @keyframes growVine {
-      to {
-        stroke-dashoffset: 0;
-      }
-    }
-
-    @keyframes bloomFlowers {
-      to {
-        opacity: 0.95;
-      }
     }
 
     @keyframes blink {
@@ -116,11 +80,11 @@
 
     @media (max-width: 480px) {
       .typed-text {
-        font-size: 1.3rem;
+        font-size: 1.25rem;
         line-height: 1.6;
       }
       .card-frame {
-        padding: 50px 30px;
+        padding: 50px 28px;
         min-height: 80vh;
       }
     }
@@ -129,50 +93,6 @@
 <body>
 
   <div class="card-frame">
-    <!-- Vine & Floral SVG Border - Very Curvy and Elaborate -->
-    <svg class="floral-svg" viewBox="0 0 400 600" preserveAspectRatio="none">
-      <!-- Main Growing Vine Frame - Intricate, organic path -->
-      <path class="vine-path" d="M 200,30 
-        C 140,30 90,50 60,90 
-        C 30,130 30,180 50,230
-        C 70,280 110,310 110,360
-        C 110,410 80,450 60,500
-        C 40,550 80,570 140,570
-        M 200,30
-        C 260,30 310,50 340,90 
-        C 370,130 370,180 350,230
-        C 330,280 290,310 290,360
-        C 290,410 320,450 340,500
-        C 360,550 320,570 260,570" />
-
-      <!-- Branching Curvy tendrils and leaves -->
-      <path class="vine-path" d="M 50,230 Q 80,240 70,280" />
-      <path class="vine-path" d="M 350,230 Q 320,240 330,280" />
-      <path class="vine-path" d="M 110,360 Q 140,380 130,420" />
-      <path class="vine-path" d="M 290,360 Q 260,380 270,420" />
-
-      <!-- Interwoven leaves on main vine -->
-      <path class="vine-path" d="M 80,70 Q 75,55 90,60 Q 85,75 80,70 Z" />
-      <path class="vine-path" d="M 320,70 Q 325,55 310,60 Q 315,75 320,70 Z" />
-      <path class="vine-path" d="M 40,150 Q 25,145 30,160 Q 45,155 40,150 Z" />
-      <path class="vine-path" d="M 360,150 Q 375,145 370,160 Q 355,155 360,150 Z" />
-      <path class="vine-path" d="M 90,480 Q 85,465 100,470 Q 95,485 90,480 Z" />
-      <path class="vine-path" d="M 310,480 Q 315,465 300,470 Q 305,485 310,480 Z" />
-
-      <!-- Flower Blooms (integrated into curves) -->
-      <!-- Large Top Flowers -->
-      <path class="flower" d="M 60,90 a 12,12 0 0,1 24,0 a 12,12 0 0,1 -24,0 Z" />
-      <path class="flower" d="M 316,90 a 12,12 0 0,1 24,0 a 12,12 0 0,1 -24,0 Z" />
-      
-      <!-- Middle Flowers -->
-      <path class="flower" d="M 60,260 a 9,9 0 0,1 18,0 a 9,9 0 0,1 -18,0 Z" />
-      <path class="flower" d="M 322,260 a 9,9 0 0,1 18,0 a 9,9 0 0,1 -18,0 Z" />
-
-      <!-- Large Bottom Flowers -->
-      <path class="flower" d="M 128,558 a 12,12 0 0,1 24,0 a 12,12 0 0,1 -24,0 Z" />
-      <path class="flower" d="M 248,558 a 12,12 0 0,1 24,0 a 12,12 0 0,1 -24,0 Z" />
-    </svg>
-
     <!-- Content Area -->
     <div class="text-container">
       <span id="typed" class="typed-text"></span><span id="cursor" class="cursor"></span>
@@ -186,24 +106,21 @@
     const cursorElement = document.getElementById("cursor");
     let index = 0;
 
-    // Start typing after the vine animation completes slightly
-    setTimeout(() => {
-      function typeChar() {
-        if (index < message.length) {
-          typedElement.textContent += message.charAt(index);
-          index++;
-          // Variable delay for realistic typing effect
-          let delay = message.charAt(index - 1) === '.' || message.charAt(index - 1) === ',' ? 400 : 50;
-          setTimeout(typeChar, delay);
-        } else {
-          // Hide cursor slowly after typing completes
-          setTimeout(() => {
-            cursorElement.style.display = "none";
-          }, 1500);
-        }
+    // Start typing effect immediately
+    function typeChar() {
+      if (index < message.length) {
+        typedElement.textContent += message.charAt(index);
+        index++;
+        let delay = message.charAt(index - 1) === '.' || message.charAt(index - 1) === ',' ? 350 : 45;
+        setTimeout(typeChar, delay);
+      } else {
+        setTimeout(() => {
+          cursorElement.style.display = "none";
+        }, 1500);
       }
-      typeChar();
-    }, 2000); // Wait for the vine animation to build
+    }
+
+    setTimeout(typeChar, 500);
   </script>
 </body>
 </html>
