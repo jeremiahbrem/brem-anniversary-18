@@ -22,7 +22,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 24px;
+      padding: 15px;
       overflow-x: hidden;
     }
 
@@ -31,14 +31,15 @@
       position: relative;
       width: 100%;
       max-width: 600px;
-      min-height: 80vh;
+      min-height: 85vh;
       background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(60, 42, 42, 0.08);
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(60, 42, 42, 0.08);
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 50px 35px;
+      padding: 60px 45px;
+      margin: auto;
     }
 
     /* Animated Floral Border SVG */
@@ -54,22 +55,17 @@
     .vine-path {
       fill: none;
       stroke: #8a9a86; /* Soft green */
-      stroke-width: 2.5;
-      stroke-dasharray: 2000;
-      stroke-dashoffset: 2000;
-      animation: growVine 4s ease-out forwards;
-    }
-
-    .leaf {
-      fill: #a3b19b;
-      opacity: 0;
-      animation: fadeInLeaves 1s ease-out 3s forwards;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-dasharray: 2500;
+      stroke-dashoffset: 2500;
+      animation: growVine 5s ease-out forwards;
     }
 
     .flower {
       fill: #d98880; /* Soft romantic rose tint */
       opacity: 0;
-      animation: bloomFlowers 1.2s ease-out 3.5s forwards;
+      animation: bloomFlowers 1.5s ease-out 4.2s forwards;
     }
 
     /* Typing Text Styling */
@@ -81,9 +77,9 @@
     }
 
     .typed-text {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       line-height: 1.7;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
       font-weight: 400;
       white-space: pre-wrap; /* Preserves line breaks */
       color: #3c2a2a;
@@ -107,15 +103,9 @@
       }
     }
 
-    @keyframes fadeInLeaves {
-      to {
-        opacity: 0.85;
-      }
-    }
-
     @keyframes bloomFlowers {
       to {
-        opacity: 0.9;
+        opacity: 0.95;
       }
     }
 
@@ -126,11 +116,12 @@
 
     @media (max-width: 480px) {
       .typed-text {
-        font-size: 1.35rem;
+        font-size: 1.3rem;
         line-height: 1.6;
       }
       .card-frame {
-        padding: 40px 25px;
+        padding: 50px 30px;
+        min-height: 80vh;
       }
     }
   </style>
@@ -138,30 +129,48 @@
 <body>
 
   <div class="card-frame">
-    <!-- Vine & Floral SVG Border -->
+    <!-- Vine & Floral SVG Border - Very Curvy and Elaborate -->
     <svg class="floral-svg" viewBox="0 0 400 600" preserveAspectRatio="none">
-      <!-- Outer Vine Frame -->
-      <path class="vine-path" d="M 20,20 L 380,20 L 380,580 L 20,580 Z" />
+      <!-- Main Growing Vine Frame - Intricate, organic path -->
+      <path class="vine-path" d="M 200,30 
+        C 140,30 90,50 60,90 
+        C 30,130 30,180 50,230
+        C 70,280 110,310 110,360
+        C 110,410 80,450 60,500
+        C 40,550 80,570 140,570
+        M 200,30
+        C 260,30 310,50 340,90 
+        C 370,130 370,180 350,230
+        C 330,280 290,310 290,360
+        C 290,410 320,450 340,500
+        C 360,550 320,570 260,570" />
+
+      <!-- Branching Curvy tendrils and leaves -->
+      <path class="vine-path" d="M 50,230 Q 80,240 70,280" />
+      <path class="vine-path" d="M 350,230 Q 320,240 330,280" />
+      <path class="vine-path" d="M 110,360 Q 140,380 130,420" />
+      <path class="vine-path" d="M 290,360 Q 260,380 270,420" />
+
+      <!-- Interwoven leaves on main vine -->
+      <path class="vine-path" d="M 80,70 Q 75,55 90,60 Q 85,75 80,70 Z" />
+      <path class="vine-path" d="M 320,70 Q 325,55 310,60 Q 315,75 320,70 Z" />
+      <path class="vine-path" d="M 40,150 Q 25,145 30,160 Q 45,155 40,150 Z" />
+      <path class="vine-path" d="M 360,150 Q 375,145 370,160 Q 355,155 360,150 Z" />
+      <path class="vine-path" d="M 90,480 Q 85,465 100,470 Q 95,485 90,480 Z" />
+      <path class="vine-path" d="M 310,480 Q 315,465 300,470 Q 305,485 310,480 Z" />
+
+      <!-- Flower Blooms (integrated into curves) -->
+      <!-- Large Top Flowers -->
+      <path class="flower" d="M 60,90 a 12,12 0 0,1 24,0 a 12,12 0 0,1 -24,0 Z" />
+      <path class="flower" d="M 316,90 a 12,12 0 0,1 24,0 a 12,12 0 0,1 -24,0 Z" />
       
-      <!-- Decorative Corner Vines -->
-      <path class="vine-path" d="M 20,60 Q 60,60 60,20" />
-      <path class="vine-path" d="M 380,60 Q 340,60 340,20" />
-      <path class="vine-path" d="M 20,540 Q 60,540 60,580" />
-      <path class="vine-path" d="M 380,540 Q 340,540 340,580" />
+      <!-- Middle Flowers -->
+      <path class="flower" d="M 60,260 a 9,9 0 0,1 18,0 a 9,9 0 0,1 -18,0 Z" />
+      <path class="flower" d="M 322,260 a 9,9 0 0,1 18,0 a 9,9 0 0,1 -18,0 Z" />
 
-      <!-- Leaves -->
-      <path class="leaf" d="M 50,20 Q 55,10 60,20 Q 55,30 50,20 Z" />
-      <path class="leaf" d="M 350,20 Q 345,10 340,20 Q 345,30 350,20 Z" />
-      <path class="leaf" d="M 20,100 Q 10,105 20,110 Q 30,105 20,100 Z" />
-      <path class="leaf" d="M 380,100 Q 390,105 380,110 Q 370,105 380,100 Z" />
-      <path class="leaf" d="M 50,580 Q 55,570 60,580 Q 55,590 50,580 Z" />
-      <path class="leaf" d="M 350,580 Q 345,570 340,580 Q 345,590 350,580 Z" />
-
-      <!-- Corner Flower Blooms -->
-      <circle class="flower" cx="60" cy="60" r="7" />
-      <circle class="flower" cx="340" cy="60" r="7" />
-      <circle class="flower" cx="60" cy="540" r="7" />
-      <circle class="flower" cx="340" cy="540" r="7" />
+      <!-- Large Bottom Flowers -->
+      <path class="flower" d="M 128,558 a 12,12 0 0,1 24,0 a 12,12 0 0,1 -24,0 Z" />
+      <path class="flower" d="M 248,558 a 12,12 0 0,1 24,0 a 12,12 0 0,1 -24,0 Z" />
     </svg>
 
     <!-- Content Area -->
@@ -194,7 +203,7 @@
         }
       }
       typeChar();
-    }, 1500);
+    }, 2000); // Wait for the vine animation to build
   </script>
 </body>
 </html>
